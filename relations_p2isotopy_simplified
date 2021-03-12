@@ -1,0 +1,97 @@
+Assume 
+
+s_Y0(0, 0) =  s_Y0(0, 1) = s_Y0(1, 1)   = s_Y0(1, 0)
+
+
+Type 2
+
+s_p2neg(0, 0, 2) + s_p2neg(0, 1, 2) = 1
+
+s_p2neg(1, 0, 2) + s_p2neg(1, 1, 2) = 0
+
+
+
+
+Type 1
+
+s_p2neg(0, 0, 1) + s_p2neg(0, 1, 1) = 0
+
+s_p2neg(1, 0, 1) + s_p2neg(1, 1, 1) = 0
+
+
+
+
+Mixed  
+
+a) s_p2neg(1, 0, 1) + s_p2neg(1, 1, 1) = s_p2neg(1, 0, 2)  + s_p2neg(1, 1, 2)
+
+b) s_p2neg(0, 0, 1) + s_p2neg(0, 0, 2) = 0
+
+c) s_p2neg(0, 0, 2) + s_p2neg(0, 1, 1) = 0 
+
+d) s_p2neg(1, 0, 1) + s_p2neg(1, 0, 2) = 0
+
+e) s_p2neg(1, 0, 2) + s_p2neg(1, 1, 1) = 0
+
+f) s_p2neg(0, 0, 1) + s_p2neg(0, 1, 2) = 1
+
+
+
+a) implies that type 1, second row and type 2, second row are consistent
+
+b) + c) implies that type 1, first row, is consistent
+
+d) + e) implies that type 1, second row, is consitstent
+
+b) + f) implies that type 2, first row, is consistent
+
+a) + d) implies that s_p2neg(1, 1, 1) = s_p2neg(1, 1, 2), consistent with type 2, second row
+
+a) + e) implies that s_p2neg(1, 0, 1)  = s_p2neg(1, 1, 2), consistent with type 2, second row
+
+
+In summary, we get two "connected components" of relations. This means that it would be good if we could find ONE more except for the ones that we already have.
+
+Newt thing we can try to do is to find Y0-relations. But we only have that
+
+
+s_Y0(1, 0) + s_Y0(1, 1) = s_p2neg(1, 0, 2) + s_p2neg(1, 1, 2) = s_p2neg(1, 0, 1) + s_p2neg(1, 1, 1)
+
+which a prior could mean that the relations between the p2-things are 1.
+
+
+So to really sum up, we see that two possible things can happen. In both case we have 
+
+s_p2neg(0, 0, 2) + s_p2neg(0, 1, 2) = 1
+
+s_p2neg(0, 0, 1) + s_p2neg(0, 1, 1) = 0
+
+b) s_p2neg(0, 0, 1) + s_p2neg(0, 0, 2) = 0
+
+(c) s_p2neg(0, 0, 2) + s_p2neg(0, 1, 1) = 0 )
+
+(f) s_p2neg(0, 0, 1) + s_p2neg(0, 1, 2) = 1)
+
+and if s_Y0(1, 0) = s_Y0(1, 1) we get 
+
+s_p2neg(1, 0, 2) + s_p2neg(1, 1, 2) = 0
+
+s_p2neg(1, 0, 1) + s_p2neg(1, 1, 1) = 0
+
+d) s_p2neg(1, 0, 1) + s_p2neg(1, 0, 2) = 0
+
+(e) s_p2neg(1, 0, 2) + s_p2neg(1, 1, 1) = 0)
+
+and if s_Y0(1, 0) = s_Y0(1, 1) + 1 we get 
+
+s_p2neg(1, 0, 2) + s_p2neg(1, 1, 2) = 1
+
+s_p2neg(1, 0, 1) + s_p2neg(1, 1, 1) = 1
+
+d) s_p2neg(1, 0, 1) + s_p2neg(1, 0, 2) = 1
+
+(e) s_p2neg(1, 0, 2) + s_p2neg(1, 1, 1) = 1)
+
+
+
+
