@@ -1,0 +1,22 @@
+
+
+first isotopy
+a	relation
+0 	n + s_Y1(1, 0)
+1 	n + s_Y1(1, 1)
+
+second isotopy
+a	relation
+0 	n + s_Y1(0, 1) + 1
+1 	n + s_Y1(1, 1)
+
+
+in summary:
+n = s_Y1(1, 0) = s_Y1(1, 1)
+n + 1 = s_Y1(0, 1) 
+
+so, in particular,
+
+s_Y1(1, 0) = s_Y1(1, 1) = s_Y1(0, 1) + 1
+
+rmk From long paper we have s_Y1(0,1) = 0 in case n =2 , which then is fischy 
