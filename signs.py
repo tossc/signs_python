@@ -72,8 +72,21 @@ def Y1_mod2(bmm1_val, bm1_val, bmm2_val, bm2_val, e1_val, e2_val, n_val, fp2_val
     else:
         return trunc(expr_eval,2)
 
+#the sign of a switch
+def switch_mod2(k_val, k1_val, fp1_val):
 
-#for the last gluing, where we simplify the formulas a bit and assume that the signs for the switches adjacent to the positive formula is calculated somewhere else
+    expr = 1+ k + k1 + fp1 
+
+    expr_eval = expr.subs([(k1,k1_val), (k,k_val), (fp1, fp1_val)])
+
+ 
+    if expr_eval.is_constant():
+        return expr_eval%2
+    else:
+        return trunc(expr_eval,2)
+
+
+#for the last gluing
 
 #case 1, when we do not have any conformal variations
 def pos_noconf_mod2(n_switch_val, n_val, wua_val, mua_val):
