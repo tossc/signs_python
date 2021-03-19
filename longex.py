@@ -130,7 +130,7 @@ s_Y1,s_Y0, s_switch = symbols('s_Y1,s_Y0, s_switch')
 def tot_diff_A1():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the lower sheet is isotoped'''
     nu_end = 0
-    intersect_diff = 0
+    intersect_diff = n
     sigma_diff = s_Y0(b+1,1) + s_switch(b)
 
     tot = straight() + gamma_A1() + nu_end + intersect_diff + sigma_diff
@@ -146,7 +146,7 @@ def tot_diff_A1():
 def tot_diff_A2():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the upper sheet is isotoped'''
     nu_end = 1
-    intersect_diff = 0
+    intersect_diff = n + n*wua_dim
     sigma_diff = s_Y0(1,b+1) + s_switch(b)
 
     tot = straight() + gamma_A2() + nu_end + intersect_diff + sigma_diff
@@ -189,4 +189,28 @@ def tot_diff_B4():
         return tot1%2
     else:
         return trunc(tot1,2)
+
+#Now we see what different relation we get by varying the value of the parity of mu(a)
+
+def sigma_diff_from_A1():
+    for s in (0,1):
+        p = tot_diff_A1().subs(a,s)
+        print(s,trunc(p,2))
+        
+def sigma_diff_from_A2():
+    for s in (0,1):
+        p = tot_diff_A2().subs(a,s)
+        print(s,trunc(p,2))
+
+def sigma_diff_from_B3():
+    for s in (0,1):
+        p = tot_diff_B3().subs(a,s)
+        print(s,trunc(p,2))
+
+
+def sigma_diff_from_B4():
+    for s in (0,1):
+        p = tot_diff_B4().subs(a,s)
+        print(s,trunc(p,2))
+        
 
