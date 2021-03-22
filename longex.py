@@ -63,22 +63,22 @@ def gamma_B3():
     # first glue b-piece to the switch-piece, using the sign formula for switches
     step_1 = signs.switch_mod2(wsb_dim-1, wsb_dim,wsb_dim)
 
-    print(step_1) 
+    #print(step_1) 
 
     #then glue this to the first end-piece at the Y_0-vertex.     
     step_2 = signs.Y0_mod2(0,0,0,0,0,1,n,n,n,1,wsb_dim-1,wsb_dim-1,wsb_dim-1,b+1)
 
-    print(step_2)
+    #print(step_2)
 
     #then glue this to the secont end-piece at the Y_1-vertex.
     step_3 = signs.Y1_mod2(1,1,0,0,1,1,n,n,n,1,k_dim, wsb_dim - 1, wsb_dim, b+2)
 
-    print(step_3)
+    #print(step_3)
 
     # and finally glue the positive a-piece to the thing
     step_4 = signs.pos_1val_mod2(0,n,wua_dim,a,2,2,k_dim)
 
-    print(step_4)
+    #print(step_4)
 
     tot = (step_1 + step_2 + step_3 + step_4).subs([(b,a), (wsb_dim, n + 1 + wua_dim), (n**2,n)])
 
@@ -95,22 +95,22 @@ def gamma_B4():
     # first glue b-piece to the switch-piece, using the sign formula for switches
     step_1 = signs.switch_mod2(wsb_dim-1, wsb_dim,wsb_dim)
 
-    print(step_1) 
+    #print(step_1) 
 
     #then glue this to the first end-piece at the Y_0-vertex.     
     step_2 = signs.Y0_mod2(0,0,0,0,1,0,n,wsb_dim-1,wsb_dim-1,b+1,wsb_dim-1,n,n,1)
 
-    print(step_2)
+    #print(step_2)
 
     #then glue this to the second end-piece at the Y_1-vertex.
     step_3 = signs.Y1_mod2(0,0,1,1,1,1,n, wsb_dim, wsb_dim-1, b, k_dim,n,n,1)
 
-    print(step_3)
+    #print(step_3)
 
     # and finally glue the positive a-piece to the thing
     step_4 = signs.pos_1val_mod2(0,n,wua_dim,a,1,2,k_dim)
 
-    print(step_4)
+    #print(step_4)
 
     tot = (step_1 + step_2 + step_3 + step_4).subs([(b,a), (wsb_dim, n + 1 + wua_dim), (n**2,n)])
 
@@ -160,9 +160,9 @@ def tot_diff_A2():
 
 
 def tot_diff_B3():
-    ''' difference between the unperturbed tree and the tree with an Y0, Y1, two end, one switch and b-buncture, where the lower sheet is isotoped'''
+    ''' difference between the unperturbed tree and the tree with an Y0, Y1, two end, one switch and b-buncture, where the lower sheet is isotoped, meaning that the punctures are coming in the order bee. There seems to be no difference between the cases when the tree is on the upper half of the annulus we get from the cusps of the perturbed sheet or the lower'''
     nu_end = 0
-    intersect_diff = 0
+    intersect_diff = n+1
     sigma_diff = s_Y0(b+1,1) + s_switch(b) + s_Y1(b,1)
 
     tot = straight() + gamma_B3() + nu_end + intersect_diff + sigma_diff
@@ -178,10 +178,10 @@ def tot_diff_B3():
 def tot_diff_B4():
     ''' difference between the unperturbed tree and the tree with an Y0, Y1, two end, one switch and b-buncture, where the upper sheet is isotoped'''
     nu_end = 0
-    intersect_diff = 0
+    intersect_diff = 1
     sigma_diff = s_Y0(1,b+1) + s_switch(b) + s_Y1(1,b)
 
-    tot = straight() + gamma_B3() + nu_end + intersect_diff + sigma_diff
+    tot = straight() + gamma_B4() + nu_end + intersect_diff + sigma_diff
 
     tot1 = tot.subs([(b,a), (n**2,n)])
 

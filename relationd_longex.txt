@@ -1,0 +1,55 @@
+First tree
+0 	n + s_Y0(1, 1) + s_switch(0)
+1 	n + s_Y0(0, 1) + s_switch(1) + 1
+
+Second tree
+0 	n + s_Y0(1, 1) + s_switch(0)
+1 	n + s_Y0(1, 0) + s_switch(1)
+
+Third tree
+0 	s_Y0(1, 1) + s_Y1(0, 1) + s_switch(0)
+1 	s_Y0(0, 1) + s_Y1(1, 1) + s_switch(1)
+
+Fourth tree
+0 	s_Y0(1, 1) + s_Y1(1, 0) + s_switch(0) + 1
+1 	s_Y0(1, 0) + s_Y1(1, 1) + s_switch(1) + 1
+
+
+Relations from first and second tree
+n = 		s_Y0(1, 1) + s_switch(0)	a)
+n + 1 =  	s_Y0(0, 1) + s_switch(1) 	b)
+n =		s_Y0(1, 1) + s_switch(0)	c)	
+n = 		s_Y0(1, 0) + s_switch(1)	d)
+
+which implies that 
+s_Y0(0, 1) = s_Y0(1, 0) + 1
+
+
+
+Relations from third and fourth tree
+0 =		s_Y0(1, 1) + s_Y1(0, 1) + s_switch(0)	i)
+0 = 		s_Y0(0, 1) + s_Y1(1, 1) + s_switch(1)	ii)
+1 = 		s_Y0(1, 1) + s_Y1(1, 0) + s_switch(0)	iii)
+1 = 		s_Y0(1, 0) + s_Y1(1, 1) + s_switch(1)	iv)
+
+which implies that 
+
+s_Y1(0, 1) +  s_Y1(1, 0) = 1
+
+s_Y0(0, 1) + s_Y0(1, 0) = 1
+
+We also get that 
+
+a) + i) => s_Y1(0,1) = n
+b) + ii) => s_Y1(1,1) = n+1
+a) + iii) => s_Y1(1,0) = n+1
+
+which differs from our results from eY1-isotopy by 1
+
+
+
+
+
+
+
+
