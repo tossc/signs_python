@@ -14,15 +14,15 @@ def case_I1():
 
     step_1 = signs.Y0_mod2(0,0,0,0,0,0,n,wsb3,wsb3,b3,wsb3+wsb2+n,wsb2,wsb2,b2)
 
-    print('step 1 \n', step_1, '\n')
+    #print('step 1 \n', step_1, '\n')
 
     step_2 = signs.Y0_mod2(0,0,1,1,0,0,n,wsb3+wsb2+n+1,wsb3+wsb2+n,b2+b3,k_dim,wsb1,wsb1,b1)
 
-    print('step 2 \n', step_2, '\n')
+    #print('step 2 \n', step_2, '\n')
 
     finish = signs.pos_1val_mod2(0,n,wua,a,1,2,k_dim)
 
-    print('finish \n', finish, '\n')
+    #print('finish \n', finish, '\n')
 
     #res=(step_1 + step_2 + finish).subs([(a,b1+b2+b3), (wua,3*n+1+wsb1+wsb2+wsb3),(n**2,2)])
 
@@ -33,23 +33,54 @@ def case_I2():
 
     step_1 = signs.Y0_mod2(0,0,0,0,0,0,n,wsb2,wsb2,b2,wsb2+wsb1+n,wsb1,wsb1,b1)
 
-    print('step 1 \n', step_1, '\n')
+    #print('step 1 \n', step_1, '\n')
     
     step_2 = signs.Y0_mod2(1,1,0,0,0,0,n,wsb3,wsb3,b3,k_dim,wsb1+wsb2+n,wsb1+wsb2+n+1,b1+b2)
  
-    print('step 2 \n', step_2, '\n')
+    #print('step 2 \n', step_2, '\n')
 
     finish = signs.pos_1val_mod2(0,n,wua,a,2,2,k_dim)
 
-    print('finish \n', finish, '\n')
+    #print('finish \n', finish, '\n')
     
     return trunc(step_1 + step_2 + finish,2)
 
 
 def difference():
-    diff = (case_I1() + case_I2()).subs([(a,b1+b2+b3), (wua,3*n+1+wsb1+wsb2+wsb3),(n**2,n)])
+   # diff = (case_I1() + case_I2()).subs([(a,b1+b2+b3), (wua,3*n+1+wsb1+wsb2+wsb3),(n**2,n)])
+
+    diff = case_I1() + case_I2()
 
     if diff.is_constant():
         return diff%2
     else:
         return trunc(diff,2)
+
+s_Y0 = symbols('s_Y0')
+
+def tot_diff():
+    #intersect_diff = (n+1)*(1 + wsb3)
+    #sigma_diff = s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
+    #tot = (difference() + intersect_diff + sigma_diff).expand().subs(n**2,n)
+
+    #tot = difference() + intersect_diff + sigma_diff
+
+    tot = difference() + n + 1 + n*wsb3 + wsb3 + s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
+ 
+    #if tot.is_constant:
+    #    return tot%2
+    #else:
+    return trunc(tot.subs(n**2,n),2)
+
+#Now we see what different relations we get for the sigmas when we vary the values for b1,b2,b3
+
+def sigma_diff():
+    for s1 in (0,1):
+        for s2 in (0,1):
+            for s3 in (0,1):
+                p = tot_diff()
+                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                p2 = trunc(p1,2)
+                #p2 = p1.subs(n,0)
+                #return s1,s2,s3,p1
+                print(s1, s2,s3,p2)
