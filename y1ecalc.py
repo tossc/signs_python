@@ -27,7 +27,7 @@ def tree_II():
 
 
 
-#sign for the tree with b as b2, end as b1
+#sign for the tree with end as b2, b as b1
 def tree_III():
     step_1 = signs.Y1_mod2(0,0,0,0,0,1,n,n,n,1,n-wua_dim,n-wua_dim-1,n-wua_dim-1,b)
     step_2 = signs.pos_1val_mod2(0,n,wua_dim,a,1,1,n-wua_dim)
