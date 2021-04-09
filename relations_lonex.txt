@@ -1,0 +1,40 @@
+First tree
+0 	n + s_Y0(1, 1) + s_switch(0) + 1
+1 	n + s_Y0(0, 1) + s_switch(1)
+
+Second tree
+0 	n + s_Y0(1, 1) + s_switch(0) + 1
+1 	n + s_Y0(1, 0) + s_switch(1) + 1
+
+Third tree
+0 	s_Y0(1, 1) + s_Y1(0, 1) + s_switch(0)
+1 	s_Y0(0, 1) + s_Y1(1, 1) + s_switch(1)
+
+Fourth tree
+0 	s_Y0(1, 1) + s_Y1(1, 0) + s_switch(0) + 1
+1 	s_Y0(1, 0) + s_Y1(1, 1) + s_switch(1) + 1
+
+
+Relations from first and second tree
+
+s_Y0(1, 1) + s_switch(0) = n+1			a)
+s_Y0(0, 1) + s_switch(1) = n			b)
+s_Y0(1, 0) + s_switch(1) = n+1			c)
+
+Relations from third and fourth tree
+
+s_Y0(1, 1) + s_Y1(0, 1) + s_switch(0) = 0	d)
+s_Y0(0, 1) + s_Y1(1, 1) + s_switch(1) = 0	e)
+s_Y0(1, 1) + s_Y1(1, 0) + s_switch(0) = 1	f)
+s_Y0(1, 0) + s_Y1(1, 1) + s_switch(1) = 1	g)
+
+
+IMPLICATIONS
+
+s_Y0(0, 1) = s_Y0(1, 0) + 1			b) + c)
+
+s_Y1(0, 1) = n + 1				a) + d)
+
+s_Y1(1, 1) = n					b) + e), c) + g)
+
+ s_Y1(1, 0) = n 				a) + f)

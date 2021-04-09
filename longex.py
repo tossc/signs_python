@@ -130,7 +130,7 @@ s_Y1,s_Y0, s_switch = symbols('s_Y1,s_Y0, s_switch')
 def tot_diff_A1():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the lower sheet is isotoped'''
     nu_end = 0
-    intersect_diff = n
+    intersect_diff = n + 1
     sigma_diff = s_Y0(b+1,1) + s_switch(b)
 
     tot = straight() + gamma_A1() + nu_end + intersect_diff + sigma_diff
@@ -146,7 +146,7 @@ def tot_diff_A1():
 def tot_diff_A2():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the upper sheet is isotoped'''
     nu_end = 1
-    intersect_diff = n + n*wua_dim
+    intersect_diff = n + n*wua_dim + 1
     sigma_diff = s_Y0(1,b+1) + s_switch(b)
 
     tot = straight() + gamma_A2() + nu_end + intersect_diff + sigma_diff

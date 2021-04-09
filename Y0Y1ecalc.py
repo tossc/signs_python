@@ -184,7 +184,7 @@ def rel_difference_pert1a():
     
 #for case I1
     stab_diff = case_I1_pert1a() + case_I1()
-    intersect_diff = n*wua + n + 1
+    intersect_diff = n*wua + n 
     sigma_diff = s_Y1(1,a)
     end_diff = 1 
 
@@ -197,7 +197,7 @@ def rel_difference_pert1a():
 
 #for case I2
     stab_diff = case_I2_pert1a() + case_I2()
-    intersect_diff = n*wua + n + 1
+    intersect_diff = n*wua + n 
     sigma_diff = s_Y1(1,a)
     end_diff = 1 
 
@@ -215,7 +215,7 @@ def rel_difference_pert1b():
     
 #for case I1
     stab_diff = case_I1_pert1b() + case_I1()
-    intersect_diff = 1
+    intersect_diff = 0
     sigma_diff = s_Y1(a,1)
     end_diff = 0
 
@@ -228,7 +228,7 @@ def rel_difference_pert1b():
 
 #for case I2
     stab_diff = case_I2_pert1b() + case_I2()
-    intersect_diff = 1
+    intersect_diff = 0
     sigma_diff = s_Y1(a,1)
     end_diff = 0
 
@@ -238,29 +238,52 @@ def rel_difference_pert1b():
         print('For the second tree we get the difference',  diff%2, '\n')
     else:
         print('For the second tree we get the difference',  trunc(diff.subs(n**2,n),2), '\n')
-def tot_diff():
-    #intersect_diff = (n+1)*(1 + wsb3)
-    #sigma_diff = s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
-    #tot = (difference() + intersect_diff + sigma_diff).expand().subs(n**2,n)
 
-    #tot = difference() + intersect_diff + sigma_diff
+def tot_diff_1a():
+    '''This function returns the total difference between the unperturbed tree and the perturbed tree where the end comes as first puncture. From rel_difference it follows that we get the same difference from tree I1 and I2, thus we can use the data from tree I1. ''' 
+    
+    stab_diff = case_I1_pert1a() + case_I1()
+    intersect_diff = n*wua + n 
+    sigma_diff = s_Y1(1,a)
+    end_diff = 1 
 
-    tot = difference() + n + 1 + n*wsb3 + wsb3 + s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
+    diff = stab_diff + intersect_diff + sigma_diff + end_diff
+
+    if diff.is_constant():
+        return diff%2
+    else:
+        return  trunc(diff.subs(n**2,n),2)
+
+
  
-    #if tot.is_constant:
-    #    return tot%2
-    #else:
-    return trunc(tot.subs(n**2,n),2)
+def tot_diff_1b():
+    '''This function returns the total difference between the unperturbed tree and the perturbed tree where the end comes as last puncture. From rel_difference it follows that we get the same difference from tree I1 and I2, thus we can use the data from tree I1. ''' 
+    
+    stab_diff = case_I1_pert1b() + case_I1()
+    intersect_diff = 0
+    sigma_diff = s_Y1(a,1)
+    end_diff = 0
 
-#Now we see what different relations we get for the sigmas when we vary the values for b1,b2,b3
+    diff = stab_diff + intersect_diff + sigma_diff + end_diff
+
+    if diff.is_constant():
+        return diff%2
+    else:
+        return  trunc(diff.subs(n**2,n),2)
+
+#Now we see what different relations we get for the sigmas when we vary the values for a
+
+#First we write function which takes an expression containing variable a and susbstitute this with a value val
+
+def a_subs(expr,val):
+    expr_subs = expr.subs(a,val)
+    if expr_subs.is_constant():
+        return expr_subs%2
+    else:
+        return trunc(expr_subs,2)
+
 
 def sigma_diff():
-    for s1 in (0,1):
-        for s2 in (0,1):
-            for s3 in (0,1):
-                p = tot_diff()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
-                #p2 = p1.subs(n,0)
-                #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+    for s in (0,1):
+        print('|a| = ',s, 'perturbation 1a' , a_subs(tot_diff_1a(),s))
+        print('|a| = ',s, 'perturbation 1b' , a_subs(tot_diff_1b(),s))
