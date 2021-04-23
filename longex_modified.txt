@@ -1,0 +1,32 @@
+First tree 
+0 n + s_Y0(1, 1) + s_switch(0, l) + 1
+1 n + s_Y0(0, 1) + s_switch(1, l)
+
+Second tree
+0 n + s_Y0(1, 1) + s_switch(0, u) + 1
+1 n + s_Y0(1, 0) + s_switch(1, u) + 1
+
+Third tree
+0 s_Y0(1, 1) + s_Y1(0, 1) + s_switch(0, l)	a)
+1 s_Y0(0, 1) + s_Y1(1, 1) + s_switch(1, l)	b)
+
+Fourth tree
+0 s_Y0(1, 1) + s_Y1(1, 0) + s_switch(0, u) + 1	c)
+1 s_Y0(1, 0) + s_Y1(1, 1) + s_switch(1, u) + 1	d)
+
+
+Using 	s_Y1(1,0) = s_Y1(1,1) =n, s_Y1(0,1) = n+1 from short 
+	s_switch(1,l) = 0 from prel assumptions
+we get the following relations from the third and fourth tree
+
+s_Y0(0,1) = n 				(b)) 		e)
+s_switch(0,l) = s_switch(0,u)		(a) + c))	f)
+s_Y0(1,0) + s_switch(1,u) = n + 1	(d))		g)
+
+And if we use s_Y0(0,0) + s_Y0(0,1) + s_Y0(1,0) from Y0-isotopies we get, from e)+g), that
+
+s_Y0(0,0) + s_Y0(0,1) + s_Y0(1,0) = n,
+s_switch(1,u) = 1
+
+
+
