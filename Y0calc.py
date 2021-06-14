@@ -56,16 +56,17 @@ def difference():
     else:
         return trunc(diff,2)
 
-s_Y0 = symbols('s_Y0')
+s_Y0, ub1, lb1, ub2, lb2, ub3, lb3 = symbols('s_Y0, ub0, lb1, ub2, lb2, ub3, lb3' )
 
 def tot_diff():
-    #intersect_diff = (n+1)*(1 + wsb3)
+    intersect_diff = (n+1)*(1 + wsb3)
     #sigma_diff = s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
-    #tot = (difference() + intersect_diff + sigma_diff).expand().subs(n**2,n)
+    sigma_diff = s_Y0(b2,b3,lb3,ub2) + s_Y0(b1,b2+b3,lb3,ub1) + s_Y0(b1,b2,lb2,ub1) + s_Y0(b1+b2,b3,lb3,ub1)
+    tot = (difference() + intersect_diff + sigma_diff).expand().subs(n**2,n)
 
     #tot = difference() + intersect_diff + sigma_diff
 
-    tot = difference() + n + 1 + n*wsb3 + wsb3 + s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
+    #tot = difference() + n + 1 + n*wsb3 + wsb3 + s_Y0(b2,b3) + s_Y0(b1,b2+b3) + s_Y0(b1,b2) + s_Y0(b1+b2,b3)
  
     #if tot.is_constant:
     #    return tot%2
@@ -75,12 +76,17 @@ def tot_diff():
 #Now we see what different relations we get for the sigmas when we vary the values for b1,b2,b3
 
 def sigma_diff():
+    p = tot_diff()
     for s1 in (0,1):
+        p1 = p.subs(ub1,s1)
         for s2 in (0,1):
+            p2 = p1.subs([(lb1,s2),(ub2,s2), (b1,s1 + s2)])
             for s3 in (0,1):
-                p = tot_diff()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
+                p3 = p2.subs([(lb2,s3), (ub3,s3), (b2,s2 + s3)])
+                for s4 in (0,1):
+                    p4 = p3.subs([(lb3,s4), (b3,s3 + s4)])
+                    #p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                    p5 = trunc(p4,2)
                 #p2 = p1.subs(n,0)
                 #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+                    print(s1, s2,s3,s4,p5)
