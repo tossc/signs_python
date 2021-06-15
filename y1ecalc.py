@@ -42,7 +42,7 @@ def tree_III():
 
 #now we calculate the difference if we also include the sigmas and the intersection and end signs. We return expressions depending on the parity of the Maslov indicies of the punctures
 
-s_Y1 = symbols('s_Y1')
+s_Y1,la,ua = symbols('s_Y1,la,ua')
 
 
 
@@ -50,7 +50,7 @@ def tot_diff_01():
     ''' difference between the unperturbed tree and the tree with the end as first puncture'''
     nu_end = 1
     intersect_diff = n*(wua_dim + 1) + 1
-    sigma_diff = s_Y1(1,b)
+    sigma_diff = s_Y1(1,b,ua,la)
 
     tot = straight() + tree_II() + nu_end + intersect_diff + sigma_diff
 
@@ -66,7 +66,7 @@ def tot_diff_02():
     ''' difference between the unperturbed tree and the tree with the end as second puncture'''
     nu_end = 0
     intersect_diff =  1
-    sigma_diff = s_Y1(b,1)
+    sigma_diff = s_Y1(b,1,ua,la)
 
     tot = straight() + tree_III() + nu_end + intersect_diff + sigma_diff
 
@@ -81,11 +81,15 @@ def tot_diff_02():
 
 def sigma_diff_from_01():
     for s in (0,1):
-        p = tot_diff_01().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_01().subs(la,s)
+        for t in (0,1):
+            p = p1.subs([(ua,t),(a,s+t)])
+            print(s,t,trunc(p,2))
         
 
 def sigma_diff_from_02():
     for s in (0,1):
-        p = tot_diff_02().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_02().subs(la,s)
+        for t in (0,1):
+            p = p1.subs([(ua,t),(a,s+t)])
+            print(s,t,trunc(p,2))

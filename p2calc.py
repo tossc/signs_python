@@ -95,14 +95,14 @@ def result_4():
     #print( ' The difference for tree IV is', (case_IV1() - case_IV2()))
     return case_IV1() - case_IV2()
 
-#now we calculate the difference if we also include the sigmas and the intersection signs. We return expressions depending on the parity of the Maslov indicies of the punctures
+#now we calculate the difference if we also include the sigmas and the intersection signs. We return expressions depending on the parity of the Maslov indicies of the punctures. The Vcon difference is added to the intersect_diff
 
 
-s_p2neg, s_Y0 = symbols('s_p2neg, s_Y0')
+s_p2neg, s_Y0, ub1, lb1, ub2, lb2, ub3, lb3 = symbols('s_p2neg, s_Y0, ub1,lb1,ub2,lb2,ub3,lb3')
 
 def tot_diff_1():
     intersect_diff = n+1+1
-    sigma_diff = s_p2neg(b3,b2,2) + s_p2neg(b3,b1+b2,2) + s_Y0(b1,b2+b3) + s_Y0(b1,b2)
+    sigma_diff = s_p2neg(b3,b2,2,lb3,ub2) + s_p2neg(b3,b1+b2,2,lb3,ub1) + s_Y0(b1,b2+b3,lb3,ub1) + s_Y0(b1,b2,lb2,ub1)
     tot = result_1() + intersect_diff + sigma_diff   
     p = Poly(tot, domain = 'GF(2)')
 
@@ -112,7 +112,7 @@ def tot_diff_1():
 
 def tot_diff_2():
     intersect_diff = 1
-    sigma_diff = s_p2neg(b3,b2,2) + s_p2neg(b3,b1+b2,2) + s_p2neg(b1,b2+b3,1) + s_p2neg(b1,b2,1)
+    sigma_diff = s_p2neg(b3,b2,2,lb3,ub2) + s_p2neg(b3,b1+b2,2,lb3,ub1) + s_p2neg(b1,b2+b3,1,lb3,ub1) + s_p2neg(b1,b2,1,lb2,ub1)
     tot = result_2().subs(n,1) + intersect_diff + sigma_diff   
     p = Poly(tot, domain = 'GF(2)')
 
@@ -120,7 +120,7 @@ def tot_diff_2():
 
 def tot_diff_3():
     intersect_diff = 1
-    sigma_diff = s_p2neg(b1,b2+b3,1) + s_p2neg(b1,b2,1) + s_Y0(b2,b3) + s_Y0(b1+b2,b3)
+    sigma_diff = s_p2neg(b1,b2+b3,1,lb3,ub1) + s_p2neg(b1,b2,1,lb2,ub1) + s_Y0(b2,b3,lb3,ub2) + s_Y0(b1+b2,b3,lb3,ub1)
     tot = result_3() + intersect_diff + sigma_diff   
     p = Poly(tot, domain = 'GF(2)')
 
@@ -130,7 +130,7 @@ def tot_diff_3():
 
 def tot_diff_4():
     intersect_diff = 0
-    sigma_diff = s_p2neg(b2,b3,1) + s_p2neg(b2,b1,2) + s_Y0(b1,b2+b3) + s_Y0(b1+b2,b3)
+    sigma_diff = s_p2neg(b2,b3,1,lb3,ub1) + s_p2neg(b2,b1,2,lb2,ub1) + s_Y0(b1,b2+b3,lb3,ub1) + s_Y0(b1+b2,b3,lb3,ub1)
     tot = result_4() + intersect_diff + sigma_diff   
     p = Poly(tot, domain = 'GF(2)')
 
@@ -140,51 +140,78 @@ def tot_diff_4():
 #Now we see what different relations we get for the sigmas when we vary the values for b1,b2,b3
 
 def sigma_diff_from_1():
+    p = tot_diff_1()
     for s1 in (0,1):
+        p1 = p.subs(ub1,s1)
         for s2 in (0,1):
+            p2 = p1.subs([(lb1,s2),(ub2,s2), (b1,s1 + s2)])
             for s3 in (0,1):
-                p = tot_diff_1()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
+                p3 = p2.subs([(lb2,s3), (ub3,s3), (b2,s2 + s3)])
+                for s4 in (0,1):
+                    p4 = p3.subs([(lb3,s4), (b3,s3 + s4)])
+                    #p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                    p5 = trunc(p4,2)
                 #p2 = p1.subs(n,0)
                 #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+                    print(s1, s2,s3,s4,p5)
+
+    #for s1 in (0,1):
+     #   for s2 in (0,1):
+      #      for s3 in (0,1):
+       #         p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+        #        p2 = trunc(p1,2)
+         #       #p2 = p1.subs(n,0)
+          #      #return s1,s2,s3,p1
+           #     print(s1, s2,s3,p2)
 
 
 
 def sigma_diff_from_2():
+    p = tot_diff_2()
     for s1 in (0,1):
+        p1 = p.subs(ub1,s1)
         for s2 in (0,1):
+            p2 = p1.subs([(lb1,s2),(ub2,s2), (b1,s1 + s2)])
             for s3 in (0,1):
-                p = tot_diff_2()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
+                p3 = p2.subs([(lb2,s3), (ub3,s3), (b2,s2 + s3)])
+                for s4 in (0,1):
+                    p4 = p3.subs([(lb3,s4), (b3,s3 + s4)])
+                    #p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                    p5 = trunc(p4,2)
                 #p2 = p1.subs(n,0)
                 #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+                    print(s1, s2,s3,s4,p5)
 
 
 
 def sigma_diff_from_3():
+    p = tot_diff_3()
     for s1 in (0,1):
+        p1 = p.subs(ub1,s1)
         for s2 in (0,1):
+            p2 = p1.subs([(lb1,s2),(ub2,s2), (b1,s1 + s2)])
             for s3 in (0,1):
-                p = tot_diff_3()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
+                p3 = p2.subs([(lb2,s3), (ub3,s3), (b2,s2 + s3)])
+                for s4 in (0,1):
+                    p4 = p3.subs([(lb3,s4), (b3,s3 + s4)])
+                    #p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                    p5 = trunc(p4,2)
                 #p2 = p1.subs(n,0)
                 #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+                    print(s1, s2,s3,s4,p5)
 
 
 
 def sigma_diff_from_4():
+    p = tot_diff_4()
     for s1 in (0,1):
+        p1 = p.subs(ub1,s1)
         for s2 in (0,1):
+            p2 = p1.subs([(lb1,s2),(ub2,s2), (b1,s1 + s2)])
             for s3 in (0,1):
-                p = tot_diff_4()
-                p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
-                p2 = trunc(p1,2)
-                #p2 = p1.subs(n,0)
-                #return s1,s2,s3,p1
-                print(s1, s2,s3,p2)
+                p3 = p2.subs([(lb2,s3), (ub3,s3), (b2,s2 + s3)])
+                for s4 in (0,1):
+                    p4 = p3.subs([(lb3,s4), (b3,s3 + s4)])
+                    #p1 = p.subs([(b1,s1), (b2,s2), (b3,s3)])
+                    p5 = trunc(p4,2)
+                    print(s1, s2,s3,s4,p5)
