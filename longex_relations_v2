@@ -1,0 +1,94 @@
+First tree
+
+ub lb
+0  0 	n + s_Y0(1, 1, 0, 0) + s_switch(0, l, 1, 0) + 1
+0  1 	n + s_Y0(0, 1, 1, 0) + s_switch(1, l, 0, 0)
+1  0 	n + s_Y0(0, 1, 0, 1) + s_switch(1, l, 1, 1)
+1  1 	n + s_Y0(1, 1, 1, 1) + s_switch(0, l, 0, 1) + 1
+
+Second tree
+0 0 	n + s_Y0(1, 1, 0, 0) + s_switch(0, u, 0, 1) + 1
+0 1 	n + s_Y0(1, 0, 1, 0) + s_switch(1, u, 1, 1) + 1
+1 0 	n + s_Y0(1, 0, 0, 1) + s_switch(1, u, 0, 0) + 1
+1 1 	n + s_Y0(1, 1, 1, 1) + s_switch(0, u, 1, 0) + 1
+
+Third tree
+0 0 	s_Y0(1, 1, 0, 0) + s_Y1(0, 1, 0, 0) + s_switch(0, l, 1, 0)
+0 1 	s_Y0(0, 1, 1, 0) + s_Y1(1, 1, 1, 0) + s_switch(1, l, 0, 0)
+1 0 	s_Y0(0, 1, 0, 1) + s_Y1(1, 1, 0, 1) + s_switch(1, l, 1, 1)
+1 1 	s_Y0(1, 1, 1, 1) + s_Y1(0, 1, 1, 1) + s_switch(0, l, 0, 1)
+
+Fourth tree
+0 0 	s_Y0(1, 1, 0, 0) + s_Y1(1, 0, 0, 0) + s_switch(0, u, 0, 1) + 1
+0 1 	s_Y0(1, 0, 1, 0) + s_Y1(1, 1, 1, 0) + s_switch(1, u, 1, 1) + 1
+1 0 	s_Y0(1, 0, 0, 1) + s_Y1(1, 1, 0, 1) + s_switch(1, u, 0, 0) + 1
+1 1 	s_Y0(1, 1, 1, 1) + s_Y1(1, 0, 1, 1) + s_switch(0, u, 1, 0) + 1
+
+From prel assumptions we have s_switch(1,l) = 0
+
+=>
+
+s_Y0(0, 1, 1, 0)  = s_Y0(0, 1, 0, 1) = n
+
+From Y0-isotopy we then get 
+
+s_Y0(1, 0, 0, 1) = s_Y0(1, 0, 1, 0) = s_Y0(0, 0, 1, 1) =s_Y0(0, 0, 0, 0) = n
+
+s_Y0(1, 1, 0, 0) = s_Y0(1, 1, 1, 1) 
+
+
+From the second tree we then get
+ 
+s_switch(1, u, 1, 1) = s_switch(1, u, 0, 0) = 1
+
+ 
+
+
+
+
+Non-explicit realations: 
+
+First tree
+s_Y0(1, 1, 0, 0) + s_switch(0, l, 1, 0) = n + 1
+
+s_Y0(1, 1, 1, 1) + s_switch(0, l, 0, 1) = n + 1
+
+Second tree
+s_Y0(1, 1, 0, 0) + s_switch(0, u, 0, 1) = n + 1
+
+s_Y0(1, 1, 1, 1) + s_switch(0, u, 1, 0) = n + 1
+
+=> 
+
+s_switch(0, l, 0, 1) = s_switch(0, u, 1, 0) = s_switch(0, l, 1, 0) = s_switch(0, u, 0, 1)
+
+
+
+
+From Y1e-isotopy we have 
+
+n = s_Y1(1, 0, 0, 0) = s_Y1(1, 0, 1, 1) = s_Y1(1, 1, 1, 0) = s_Y1(1, 1, 0, 1)
+
+n+1 =  s_Y1(0, 1, 0, 0) = s_Y1(0, 1, 1, 1)
+
+
+and from Y0-isotopy 
+
+s_Y0(0, 0, 0, 0) = s_Y0(0, 1, 1, 0)						b),c)
+
+s_Y0(1, 0, 0, 1) = s_Y0(0, 0, 0, 0)						e), i)
+
+s_Y0(0, 1, 1, 0) = s_Y0(1, 0, 0, 1)						j)
+
+s_Y0(1, 0, 1, 0)  + s_Y0(0, 1, 0, 1)  = 0	g)
+
+ s_Y0(0, 0, 1, 1) + s_Y0(1, 0, 1, 0) = 0	h), l)
+
+s_Y0(0, 1, 0, 1) + s_Y0(0, 0, 1, 1)  = 0	n), o)
+
+
+s_Y0(1, 1, 0, 0) + s_Y0(1, 1, 1, 1) + s_Y0(1, 0, 1, 0) + s_Y0(0, 1, 1, 0) = 0 	f)
+
+	
+s_Y0(1, 1, 0, 0) + s_Y0(1, 1, 1, 1) + s_Y0(1, 0, 0, 1) + s_Y0(0, 1, 0, 1) = 0	k)
+

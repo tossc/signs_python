@@ -123,7 +123,7 @@ def gamma_B4():
 
 #now we calculate the difference if we also include the sigmas and the intersection and end signs. We return expressions depending on the parity of the Maslov indicies of the punctures
 
-s_Y1,s_Y0, s_switch, l ,u = symbols('s_Y1,s_Y0, s_switch,l,u')
+s_Y1,s_Y0, s_switch, l ,u, ub, lb = symbols('s_Y1,s_Y0, s_switch,l,u,ub,lb')
 
 
 
@@ -131,7 +131,7 @@ def tot_diff_A1():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the lower sheet is isotoped'''
     nu_end = 0
     intersect_diff = n + 1
-    sigma_diff = s_Y0(b+1,1) + s_switch(b,l)
+    sigma_diff = s_Y0(b+1,1,lb,ub) + s_switch(b,l,lb+1,ub)
 
     tot = straight() + gamma_A1() + nu_end + intersect_diff + sigma_diff
 
@@ -147,7 +147,7 @@ def tot_diff_A2():
     ''' difference between the unperturbed tree and the tree with an Y0, end, switch and b-puncture, where the upper sheet is isotoped. Might be a mistake in intersect_diff by one. Or maybe this tree does not exist'''
     nu_end = 1
     intersect_diff = n + n*wua_dim + 1
-    sigma_diff = s_Y0(1,b+1) + s_switch(b,u)
+    sigma_diff = s_Y0(1,b+1,lb,ub) + s_switch(b,u,lb,ub+1)
 
     tot = straight() + gamma_A2() + nu_end + intersect_diff + sigma_diff
 
@@ -163,7 +163,7 @@ def tot_diff_B3():
     ''' difference between the unperturbed tree and the tree with an Y0, Y1, two end, one switch and b-buncture, where the lower sheet is isotoped, meaning that the punctures are coming in the order bee. There seems to be no difference between the cases when the tree is on the upper half of the annulus we get from the cusps of the perturbed sheet or the lower'''
     nu_end = 0
     intersect_diff = n+1
-    sigma_diff = s_Y0(b+1,1) + s_switch(b,l) + s_Y1(b,1)
+    sigma_diff = s_Y0(b+1,1,lb,ub) + s_switch(b,l,lb+1,ub) + s_Y1(b,1,lb,ub)
 
     tot = straight() + gamma_B3() + nu_end + intersect_diff + sigma_diff
 
@@ -179,7 +179,7 @@ def tot_diff_B4():
     ''' difference between the unperturbed tree and the tree with an Y0, Y1, two end, one switch and b-buncture, where the upper sheet is isotoped'''
     nu_end = 0
     intersect_diff = 1
-    sigma_diff = s_Y0(1,b+1) + s_switch(b,u) + s_Y1(1,b)
+    sigma_diff = s_Y0(1,b+1,lb,ub) + s_switch(b,u,lb,ub+1) + s_Y1(1,b,lb,ub)
 
     tot = straight() + gamma_B4() + nu_end + intersect_diff + sigma_diff
 
@@ -194,23 +194,31 @@ def tot_diff_B4():
 
 def sigma_diff_from_A1():
     for s in (0,1):
-        p = tot_diff_A1().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_A1().subs(ub,s)
+        for t in (0,1):
+            p = p1.subs([(lb,t), (a, s+t)])
+            print(s,t,trunc(p,2))
         
 def sigma_diff_from_A2():
     for s in (0,1):
-        p = tot_diff_A2().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_A2().subs(ub,s)
+        for t in (0,1):
+            p = p1.subs([(lb,t), (a, s+t)])
+            print(s,t,trunc(p,2))
 
 def sigma_diff_from_B3():
     for s in (0,1):
-        p = tot_diff_B3().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_B3().subs(ub,s)
+        for t in (0,1):
+            p = p1.subs([(lb,t), (a, s+t)])
+            print(s,t,trunc(p,2))
 
 
 def sigma_diff_from_B4():
     for s in (0,1):
-        p = tot_diff_B4().subs(a,s)
-        print(s,trunc(p,2))
+        p1 = tot_diff_B4().subs(ub,s)
+        for t in (0,1):
+            p = p1.subs([(lb,t), (a, s+t)])
+            print(s,t,trunc(p,2))
         
 
