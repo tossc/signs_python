@@ -130,7 +130,7 @@ def tot_diff_3():
 
 def tot_diff_4():
     intersect_diff = 0
-    sigma_diff = s_p2neg(b2,b3,1,lb3,ub1) + s_p2neg(b2,b1,2,lb2,ub1) + s_Y0(b1,b2+b3,lb3,ub1) + s_Y0(b1+b2,b3,lb3,ub1)
+    sigma_diff = s_p2neg(b2,b3,1,lb3,ub2) + s_p2neg(b2,b1,2,lb2,ub1) + s_Y0(b1,b2+b3,lb3,ub1) + s_Y0(b1+b2,b3,lb3,ub1)
     tot = result_4() + intersect_diff + sigma_diff   
     p = Poly(tot, domain = 'GF(2)')
 
