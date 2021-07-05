@@ -1,7 +1,7 @@
 
 import sympy, signs
 
-'''calculates the sign differences between a straight flow line with positive puncture a and negative puncture b, and the trees we get by a Legendrian isotopy as described in Tobias trees-paper, and also in my long paper about signs of trees.'''
+'''calculates the sign differences between a straight flow line with positive puncture a and negative puncture b, and the trees we get by a Legendrian isotopy as described in Tobias trees-paper, and also in my long paper about signs of trees. Might be mistakes in intersection signs, and does not take into account the difference between upper and lower switches. Does not iclude sheet-signs.'''
 
 from sympy import *
 

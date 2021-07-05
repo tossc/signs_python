@@ -1,7 +1,7 @@
 import sympy, signs
 
 
-'''calculates the sign differences between trees with Y0-vertices under legendrian movs, as described in the appendix of the short article'''
+'''calculates the sign differences between trees with Y0-vertices under legendrian movs, as described in the appendix of the short article. We have included parameters for the signs of the sheets.'''
 
 from sympy import *
 

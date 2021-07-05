@@ -1,6 +1,6 @@
 import sympy, signs
 
-'''calculates the sign difference between trees with one positive puncture a and one negative puncture b, and the two different trees we get after a particular Legendrian isotopy, and these trees have in addition one end and one Y1-vertex. Has included the signs of the sheets.'''
+'''calculates the sign difference between trees with one positive puncture a and one negative puncture b, and the two different trees we get after a particular Legendrian isotopy, and these trees have in addition one end and one Y1-vertex. Signs of the sheets are included, so is also an extra sign for the non-standard end, which is given by a v. '''
 
 from sympy import *
 
@@ -42,7 +42,7 @@ def tree_III():
 
 #now we calculate the difference if we also include the sigmas and the intersection and end signs. We return expressions depending on the parity of the Maslov indicies of the punctures
 
-s_Y1,la,ua = symbols('s_Y1,la,ua')
+s_Y1,la,ua,v = symbols('s_Y1,la,ua,v')
 
 
 
@@ -77,13 +77,13 @@ def tot_diff_02():
     else:
         return trunc(tot1,2)
 
-#Now we see what different relation we get by varying the value of the parity of mu(a)
+#Now we see what different relation we get by varying the value of the parity of mu(a). The v is a sign coming from and end whose boundary conditions we need to twist to be able to glue the capping operators. 
 
 def sigma_diff_from_01():
     for s in (0,1):
         p1 = tot_diff_01().subs(la,s)
         for t in (0,1):
-            p = p1.subs([(ua,t),(a,s+t)])
+            p = p1.subs([(ua,t),(a,s+t)])+ (s +1)*v
             print(s,t,trunc(p,2))
         
 
@@ -91,5 +91,5 @@ def sigma_diff_from_02():
     for s in (0,1):
         p1 = tot_diff_02().subs(la,s)
         for t in (0,1):
-            p = p1.subs([(ua,t),(a,s+t)])
+            p = p1.subs([(ua,t),(a,s+t)])+t*v
             print(s,t,trunc(p,2))

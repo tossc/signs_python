@@ -1,0 +1,30 @@
+Description of the python files:
+
+signs.py has code for calculate the signs of each vertex
+
+longex has three versions, the old one has most likely some mistakes 
+in intersection signs and do not take into account the difference between lower and upper swithes. The two modified ones seem to be equal, but the idea was to include end-sign difference in the twisted version.
+
+p2calc has the signs of the sheets included, but the result sheets are a bit fishy. But this might be mistakes done by me when cleaning up in the files.
+
+Y0calc has also the signs of the sheets included.
+
+Y0Y1ecalc is an old try, notsure this makes sense.
+
+y1ecalc has 2 versions. Both include signs of sheets, the twistend-version also includes a sign coming from the ends where we have to transform the boundary conditions in the aux-dir to be able to glue the capping operator. This sign is given by 'v'.
+
+
+ 
+Description of result files:
+
+longex: longex_relations_v2 is with signs from sheets, modified is without those signs, but with upper/lower switch difference. longex and longex_old har not these signs, and I shink they differ by intersection signs. 
+
+p2: p2_realtions_v2 and p2rel_... might be fishy. Hopefully we don't need to use those. Here we have included signs from sheets. realtions_from_p2isotopy and simplified version of this should be ok and hopefully useful.
+
+Y0: relations_Y0isotopy is without sheet-signs, relations_Y0v2 is with
+
+eY1: relations_from_eY1isotopy is without sheet-signs, _v2 is with
+
+ 
+
+ 

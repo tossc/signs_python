@@ -1,6 +1,6 @@
 import sympy, signs
 
-'''calculates the sign differences between trees with 2-valent negative vertices under legendrian moves, as shown in pictures from 1 march 2021. We have not included the 1 coming from different orientations of the space of conformal variatons.'''
+'''calculates the sign differences between trees with 2-valent negative vertices under legendrian moves, as shown in pictures from 1 march 2021. We have included parameters keeping track of the signs of the sheets. Maybe the results are a bit fishy, might be better to remove these signs.'''
 
 from sympy import *
 
