@@ -20,11 +20,12 @@ Description of result files:
 longex: longex_relations_v2 is with signs from sheets, modified is without those signs, but with upper/lower switch difference. longex and longex_old har not these signs, and I shink they differ by intersection signs. 
 
 p2: p2_realtions_v2 and p2rel_... might be fishy. Hopefully we don't need to use those. Here we have included signs from sheets. realtions_from_p2isotopy and simplified version of this should be ok and hopefully useful.
+Update 19 august 2021:  relations_from_p2isotopy looks ok, found a mistake in p2rel_first_tree, d). Changed from (1,1,2,1,1) = (2,1,2,1,0) + 1 to (0,0,2,1,1) = (0,1,2,1,0)+1. This relation already existed.
 
 Y0: relations_Y0isotopy is without sheet-signs, relations_Y0v2 is with
 
 eY1: relations_from_eY1isotopy is without sheet-signs, _v2 is with
 
- 
+
 
  
