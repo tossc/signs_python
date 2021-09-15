@@ -123,3 +123,42 @@ def easy_test_p2_1():
                     p4 = p3.subs(u4,s4)
                     p5 = trunc(p4,2)
                     print(s1,s2,s3,s4,p5)
+                    
+                    
+def easy_test_p2_2():
+    p = po(u4,u1,u1+u2,u2+u4,1)+po(u4,u2,u3+u4,u2+u3,2) + po(u3,u1,u1+u2,u2+u3,1) + po(u4,u1,u3+u4,u1+u3,2)+(u1+u2)*(u3+u4+1)
+    for s1 in (0,1):
+        p1 = p.subs(u1,s1)
+        for s2 in (0,1):
+            p2 = p1.subs(u2,s2)
+            for s3 in (0,1):
+                p3 = p2.subs(u3,s3)
+                for s4 in (0,1):
+                    p4 = p3.subs(u4,s4)
+                    p5 = trunc(p4,2)
+                    print(s1,s2,s3,s4,p5)
+                    
+def easy_test_p2_3():
+    p = po(u4,u1,u1+u2,u2+u4,1)+po(u3,u1,u1+u2,u2+u3,1) + y(u4,u2,u2+u3,u3+u4) + y(u4,u1,u1+u3,u3+u4)
+    for s1 in (0,1):
+        p1 = p.subs(u1,s1)
+        for s2 in (0,1):
+            p2 = p1.subs(u2,s2)
+            for s3 in (0,1):
+                p3 = p2.subs(u3,s3)
+                for s4 in (0,1):
+                    p4 = p3.subs(u4,s4)
+                    p5 = trunc(p4,2)
+                    print(s1,s2,s3,s4,p5)
+def easy_test_p2_4():
+    p = po(u4,u2,u2+u3,u3+u4,1)+po(u3,u1,u2+u3,u1+u2,2) + y(u4,u1,u1+u2,u2+u4) + y(u4,u1,u1+u3,u3+u4)+(u1+u2)*(u2+u3+1)
+    for s1 in (0,1):
+        p1 = p.subs(u1,s1)
+        for s2 in (0,1):
+            p2 = p1.subs(u2,s2)
+            for s3 in (0,1):
+                p3 = p2.subs(u3,s3)
+                for s4 in (0,1):
+                    p4 = p3.subs(u4,s4)
+                    p5 = trunc(p4,2)
+                    print(s1,s2,s3,s4,p5)
